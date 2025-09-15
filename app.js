@@ -28,28 +28,33 @@ const asciiHeart = [
     "     ⠉⢿⣿⣿⣿⠟⠋⠀",
     "⠀      ⠙⠻⠁"
 ]
-
-const printByChart = (ms) => {
-
+/**
+ * 
+ * @param {delay} delay y además dentro 2 bucles forEach para cada parte del corazon
+ * @returns devuelve el corazon carácter por carácter
+ */
+const printByChart = (delay) => {
     let contador = 0;
-    asciiHeart.forEach((x) => {
-        x.split("").forEach((y, i) => {
+    asciiHeart.forEach((partecorazon) => {
+        partecorazon.split("").forEach((puntoscorazon, posicion) => {
             setTimeout(() => {
-                process.stdout.write(y)
-                if (i == x.length - 1) {
-                    process.stdout.write("\n");
-                }
-            }, ms * contador++)
+                process.stdout.write(puntoscorazon)
+                if (posicion == partecorazon.length - 1) process.stdout.write("\n");    
+            }, delay * contador++)
         })
     })
 }
 
-const printByLine = (ms) => {
-
-    asciiHeart.forEach((x, i) => {
+/**
+ * 
+ * @param {delay} delay  y además dentro un forEach que imprime por linea saltando de linea
+ * @returns devuelve la función línea por línea el AsciiHeart
+ */
+const printByLine = (delay) => {
+    asciiHeart.forEach((lineacorazon, posicion) => {
         setTimeout(() => {
-            console.log(x)
-        }, ms * i);
+            console.log(lineacorazon)
+        }, delay * posicion);
     });
 }
 
